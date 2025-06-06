@@ -14,6 +14,7 @@ export default defineConfig({
     vueDevTools(),
     tailwindcss(),
   ],
+  base: process?.env?.IS_GITHUB_PAGES ? '/pokepipeline-frontend/' : '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

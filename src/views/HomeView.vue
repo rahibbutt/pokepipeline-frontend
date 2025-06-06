@@ -49,14 +49,6 @@
       </div>
     </div>
 
-
-
-
-
-
-
-
-
     <div
       class="px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-6"
     >
@@ -186,7 +178,7 @@ const handleClick = async () => {
       statusSuccess.value = false
     }
 
-    // ⏱️ Auto-hide the message after 3 seconds
+    // Auto-hide the message after 3 seconds
     setTimeout(() => {
       statusMessage.value = ''
     }, 3000)
@@ -196,7 +188,7 @@ const handleClick = async () => {
     statusMessage.value = 'An error occurred while triggering.'
     statusSuccess.value = false
 
-    // ⏱️ Auto-hide the message after 3 seconds
+    // Auto-hide the message after 3 seconds
     setTimeout(() => {
       statusMessage.value = ''
     }, 3000)
@@ -205,9 +197,6 @@ const handleClick = async () => {
     isLoading.value = false
   }
 }
-
-
-
 
 onMounted(async () => {
   await fetchPokemons()

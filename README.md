@@ -37,3 +37,12 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Run Production build locally
+Run command:
+```
+docker run -p 9000:80 rahibbutt/frontend
+```
+
+Access local server running at:
+http://localhost:9000
