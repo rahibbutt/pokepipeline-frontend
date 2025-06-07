@@ -1,8 +1,11 @@
 {
-  "name": "frontend",
+  "name": "pokepipeline-frontend",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rahibbutt/pokepipeline-frontend"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
