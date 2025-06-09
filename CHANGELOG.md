@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/rahibbutt/pokepipeline-frontend/compare/v1.0.0...v1.1.0) (2025-06-09)
+
+
+### Features
+
+* updated Readme ([1f58a98](https://github.com/rahibbutt/pokepipeline-frontend/commit/1f58a9849fc754681dca096a1795c931069c44aa))
+
 # 1.0.0 (2025-06-09)
 
 
