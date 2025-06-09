@@ -1,48 +1,41 @@
-# Pokepipeline Frontend
+# Pokepipeline-frontend
+Pokepipeline-frontend is a single-page production-ready application built with Vue.js 3 and styled using Tailwind CSS. The app fetches Pokémon data from the [pokepipeline-backend](https://github.com/rahibbutt/pokepipeline-backend) via [PokeAPI](https://pokeapi.co/) and displays it in a responsive, user-friendly interface.
 
-This template should help get you started developing with Vue 3 in Vite.
+The project follows semantic versioning, includes CI/CD workflows for automated builds and deployments and is available both as a static site on [GitHub Pages](https://rahibbutt.github.io/pokepipeline-frontend/) and as a [Docker-ready](https://hub.docker.com/r/rahibbutt/frontend) image for containerized environments.
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+## Run production-ready build locally using docker image
+1. Pull docker image from Dockerhub:
 ```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
+docker pull rahibbutt/frontend:latest
 ```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
-
-# Run Production build locally
-Run command:
+2. Run Docker image locally:
 ```
 docker run -p 9000:80 rahibbutt/frontend
 ```
+Access the local server at: [http://localhost:9000](http://localhost:9000)
 
-Access local server running at:
-http://localhost:9000
+## Run production-ready build locally by cloning Github repository
+1. Git clone using the web URL:
+```
+https://github.com/rahibbutt/pokepipeline-frontend.git
+```
+2. Install npm dependencies:
+```
+npm install
+```
+3. Build the project:
+```
+npm run build
+```
+4. Run project locally:
+```
+npm run dev
+```
+
+## 📦 Technologies used
+
+* Vue.js 3 + Tailwind
+* Docker
+* Semantic versioning
+* GitHub Actions (CI/CD)
+* Axios for API communication
