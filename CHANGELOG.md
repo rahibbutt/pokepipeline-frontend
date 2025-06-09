@@ -3,6 +3,13 @@
 
 ### Features
 
+* update readme file ([ee8ec77](https://github.com/rahibbutt/pokepipeline-frontend/commit/ee8ec77c16b018700783730d97c096ce0fc7b54b))
+
+# 1.0.0 (2025-06-09)
+
+
+### Features
+
 * configuration ([c3e0ead](https://github.com/rahibbutt/pokepipeline-frontend/commit/c3e0eada95fcd0a8792fcb5bc16512a0af40d7c6))
 * configure dynamic base url for github pages ([0b9699a](https://github.com/rahibbutt/pokepipeline-frontend/commit/0b9699aa2998007e344d957d03f3ad5494c75a8d))
 * initial setup with semantic-release and CI ([7ea8355](https://github.com/rahibbutt/pokepipeline-frontend/commit/7ea83557d7ed19e44134efeb353c1163378fa209))
