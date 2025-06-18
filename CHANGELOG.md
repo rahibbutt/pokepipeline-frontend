@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/rahibbutt/pokepipeline-frontend/compare/v1.3.0...v1.4.0) (2025-06-18)
+
+
+### Features
+
+* configure ESlint and prettier ([fe66983](https://github.com/rahibbutt/pokepipeline-frontend/commit/fe669838f059004d09384e6258086e0305038b43))
+
 # [1.3.0](https://github.com/rahibbutt/pokepipeline-frontend/compare/v1.2.0...v1.3.0) (2025-06-09)
 
 
