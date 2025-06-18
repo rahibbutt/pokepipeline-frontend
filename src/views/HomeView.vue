@@ -1,11 +1,14 @@
 <template>
   <div class="min-h-screen bg-gray-100 p-6">
-    <h1 class="text-3xl font-bold mb-6 text-center text-indigo-600">Pokemon List</h1>
+    <h1 class="text-3xl font-bold mb-6 text-center text-indigo-600">
+      Pokemon List
+    </h1>
 
     <!-- Container -->
     <div class="w-full flex justify-center mt-6 ml-48">
-      <div class="flex flex-col sm:flex-row items-center gap-3 max-w-4xl w-full px-4">
-
+      <div
+        class="flex flex-col sm:flex-row items-center gap-3 max-w-4xl w-full px-4"
+      >
         <!-- Search Input -->
         <input
           v-model="searchTerm"
@@ -19,7 +22,11 @@
           @click="handleClick"
           :disabled="isLoading"
           class="flex-shrink-0 px-6 py-2 flex items-center justify-center gap-2 font-semibold rounded-lg shadow-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 text-white disabled:cursor-not-allowed whitespace-nowrap"
-          :class="isLoading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500'"
+          :class="
+            isLoading
+              ? 'bg-gray-400'
+              : 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500'
+          "
         >
           <svg
             v-if="isLoading"
@@ -28,10 +35,21 @@
             fill="none"
             viewBox="0 0 24 24"
           >
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            />
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+            />
           </svg>
-          <span>{{ isLoading ? 'Triggering...' : 'Trigger Pipeline' }}</span>
+          <span>{{ isLoading ? "Triggering..." : "Trigger Pipeline" }}</span>
         </button>
 
         <!-- Status Message -->
@@ -39,11 +57,12 @@
           <p
             class="text-sm font-medium transition-opacity duration-300"
             :class="[
-          statusMessage ? 'opacity-100 visible' : 'opacity-0 invisible',
-          statusSuccess ? 'text-green-600' : 'text-red-600'
-        ]"
+              statusMessage ? 'opacity-100 visible' : 'opacity-0 invisible',
+              statusSuccess ? 'text-green-600' : 'text-red-600',
+            ]"
           >
-            {{ statusMessage || '‎' }} <!-- Invisible fallback character -->
+            {{ statusMessage || "‎" }}
+            <!-- Invisible fallback character -->
           </p>
         </div>
       </div>
@@ -61,20 +80,30 @@
         <div
           class="flex justify-between items-center bg-yellow-300 px-3 py-1 rounded-t-lg border-b border-yellow-500"
         >
-          <h2 class="text-lg font-bold capitalize text-gray-800">{{ pokemon.name }}</h2>
-          <span class="text-sm font-semibold text-red-600"> HP {{ getHP(pokemon) }} </span>
+          <h2 class="text-lg font-bold capitalize text-gray-800">
+            {{ pokemon.name }}
+          </h2>
+          <span class="text-sm font-semibold text-red-600">
+            HP {{ getHP(pokemon) }}
+          </span>
         </div>
 
         <!-- Image -->
         <div
           class="flex justify-center items-center bg-white rounded-lg p-3 mt-2 mb-4 shadow-inner"
         >
-          <img :src="pokemon.sprite_url" :alt="pokemon.name" class="w-28 h-28" />
+          <img
+            :src="pokemon.sprite_url"
+            :alt="pokemon.name"
+            class="w-28 h-28"
+          />
         </div>
 
         <!-- Types -->
         <div class="mb-2">
-          <span class="block text-xs font-semibold text-gray-600 uppercase">Types</span>
+          <span class="block text-xs font-semibold text-gray-600 uppercase"
+            >Types</span
+          >
           <div class="flex flex-wrap gap-1 mt-1">
             <span
               v-for="(type, index) in pokemon.types"
@@ -88,7 +117,9 @@
 
         <!-- Abilities -->
         <div class="mb-2">
-          <span class="block text-xs font-semibold text-gray-600 uppercase">Abilities</span>
+          <span class="block text-xs font-semibold text-gray-600 uppercase"
+            >Abilities</span
+          >
           <div class="flex flex-wrap gap-1 mt-1">
             <span
               v-for="(ability, index) in pokemon.abilities"
@@ -102,10 +133,14 @@
 
         <!-- Stats -->
         <div class="mb-2">
-          <span class="block text-xs font-semibold text-gray-600 uppercase">Stats</span>
+          <span class="block text-xs font-semibold text-gray-600 uppercase"
+            >Stats</span
+          >
           <ul class="text-sm text-gray-700 space-y-1 mt-1">
             <li
-              v-for="(stat, index) in pokemon.stats.filter((s) => s.name !== 'hp')"
+              v-for="(stat, index) in pokemon.stats.filter(
+                (s) => s.name !== 'hp',
+              )"
               :key="index"
               class="flex justify-between"
             >
@@ -120,85 +155,85 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, computed } from 'vue'
-import axios from 'axios'
-import { API_BASE_URL } from '@/globals.ts'
-const isLoading = ref(false)
-const statusMessage = ref('')
-const statusSuccess = ref(true) // for coloring the message
-const searchTerm = ref('')
+import { onMounted, ref, computed } from "vue";
+import axios from "axios";
+import { API_BASE_URL } from "@/globals.ts";
+const isLoading = ref(false);
+const statusMessage = ref("");
+const statusSuccess = ref(true); // for coloring the message
+const searchTerm = ref("");
 
 interface Pokemon {
-  id: number
-  name: string
-  sprite_url: string
-  types: { name: string; slot: number }[]
-  abilities: { name: string; is_hidden: boolean; slot: number }[]
-  stats: { name: string; base_stat: number }[]
+  id: number;
+  name: string;
+  sprite_url: string;
+  types: { name: string; slot: number }[];
+  abilities: { name: string; is_hidden: boolean; slot: number }[];
+  stats: { name: string; base_stat: number }[];
 }
 
-const pokemons = ref<Pokemon[]>([])
+const pokemons = ref<Pokemon[]>([]);
 
 const filteredPokemons = computed(() => {
-  const term = searchTerm.value.toLowerCase()
-  return pokemons.value.filter((pokemon) => pokemon.name?.toLowerCase().includes(term))
-})
+  const term = searchTerm.value.toLowerCase();
+  return pokemons.value.filter((pokemon) =>
+    pokemon.name?.toLowerCase().includes(term),
+  );
+});
 
 const getHP = (pokemon: Pokemon): number | string => {
-  const hpStat = pokemon.stats.find((stat) => stat.name === 'hp')
-  return hpStat?.base_stat ?? '?'
-}
+  const hpStat = pokemon.stats.find((stat) => stat.name === "hp");
+  return hpStat?.base_stat ?? "?";
+};
 
 const fetchPokemons = async () => {
   try {
-    const res = await axios.get(`${API_BASE_URL}/api/pokemon`)
-    pokemons.value = res.data
-    console.log('Fetched Pokémons:', res.data)
+    const res = await axios.get(`${API_BASE_URL}/api/pokemon`);
+    pokemons.value = res.data;
+    console.log("Fetched Pokémons:", res.data);
   } catch (err) {
-    console.error('Error fetching Pokémon:', err)
-    statusMessage.value = 'Failed to fetch Pokémons.'
-    statusSuccess.value = false
+    console.error("Error fetching Pokémon:", err);
+    statusMessage.value = "Failed to fetch Pokémons.";
+    statusSuccess.value = false;
   }
-}
+};
 
 const handleClick = async () => {
   try {
-    isLoading.value = true
-    statusMessage.value = ''
+    isLoading.value = true;
+    statusMessage.value = "";
 
-    const res = await axios.get(`${API_BASE_URL}/api/trigger-pipeline`)
-    pokemons.value = res.data
+    const res = await axios.get(`${API_BASE_URL}/api/trigger-pipeline`);
+    pokemons.value = res.data;
 
     if (res?.data?.status === "OK") {
-      await fetchPokemons()
-      statusMessage.value = 'Pipeline triggered successfully!'
-      statusSuccess.value = true
+      await fetchPokemons();
+      statusMessage.value = "Pipeline triggered successfully!";
+      statusSuccess.value = true;
     } else {
-      statusMessage.value = 'Pipeline trigger failed.'
-      statusSuccess.value = false
+      statusMessage.value = "Pipeline trigger failed.";
+      statusSuccess.value = false;
     }
 
     // Auto-hide the message after 3 seconds
     setTimeout(() => {
-      statusMessage.value = ''
-    }, 3000)
-
+      statusMessage.value = "";
+    }, 3000);
   } catch (err) {
-    console.error('Error Triggering pipeline:', err)
-    statusMessage.value = 'An error occurred while triggering.'
-    statusSuccess.value = false
+    console.error("Error Triggering pipeline:", err);
+    statusMessage.value = "An error occurred while triggering.";
+    statusSuccess.value = false;
 
     // Auto-hide the message after 3 seconds
     setTimeout(() => {
-      statusMessage.value = ''
-    }, 3000)
-
+      statusMessage.value = "";
+    }, 3000);
   } finally {
-    isLoading.value = false
+    isLoading.value = false;
   }
-}
+};
 
 onMounted(async () => {
-  await fetchPokemons()
-})
+  await fetchPokemons();
+});
 </script>
