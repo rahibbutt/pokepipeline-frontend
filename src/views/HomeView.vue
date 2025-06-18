@@ -4,56 +4,57 @@
       Pokemon List
     </h1>
 
-    <!-- Container -->
-    <div class="w-full flex justify-center mt-6 ml-48">
-      <div
-        class="flex flex-col sm:flex-row items-center gap-3 max-w-4xl w-full px-4"
-      >
-        <!-- Search Input -->
-        <input
-          v-model="searchTerm"
-          type="text"
-          placeholder="Search Pokémon by name..."
-          class="flex-1 min-w-[200px] max-w-sm px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-150"
-        />
-
-        <!-- Trigger Button -->
-        <button
-          @click="handleClick"
-          :disabled="isLoading"
-          class="flex-shrink-0 px-6 py-2 flex items-center justify-center gap-2 font-semibold rounded-lg shadow-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 text-white disabled:cursor-not-allowed whitespace-nowrap"
-          :class="
-            isLoading
-              ? 'bg-gray-400'
-              : 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500'
-          "
+    <div class="w-full flex justify-center mt-6 px-4">
+      <div class="w-full max-w-4xl flex flex-col items-center gap-4">
+        <div
+          class="w-full flex flex-col sm:flex-row justify-center items-center gap-3"
         >
-          <svg
-            v-if="isLoading"
-            class="animate-spin h-5 w-5 text-white"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
+          <!-- Search Input -->
+          <input
+            v-model="searchTerm"
+            type="text"
+            placeholder="Search Pokémon by name..."
+            class="flex-1 min-w-[200px] max-w-sm w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-150 text-center sm:text-left"
+          />
+
+          <!-- Trigger Button -->
+          <button
+            @click="handleClick"
+            :disabled="isLoading"
+            class="hover:animate-bounce flex-shrink-0 px-6 py-2 flex items-center justify-center gap-2 font-semibold rounded-lg shadow-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 text-white disabled:cursor-not-allowed whitespace-nowrap"
+            :class="
+              isLoading
+                ? 'bg-gray-400'
+                : 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500'
+            "
           >
-            <circle
-              class="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              stroke-width="4"
-            />
-            <path
-              class="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-            />
-          </svg>
-          <span>{{ isLoading ? "Triggering..." : "Trigger Pipeline" }}</span>
-        </button>
+            <svg
+              v-if="isLoading"
+              class="animate-spin h-5 w-5 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              />
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+              />
+            </svg>
+            <span>{{ isLoading ? "Triggering..." : "Trigger Pipeline" }}</span>
+          </button>
+        </div>
 
         <!-- Status Message -->
-        <div class="min-w-[160px] h-5 text-left flex-shrink-0">
+        <div class="min-w-[160px] h-5 text-center">
           <p
             class="text-sm font-medium transition-opacity duration-300"
             :class="[
@@ -74,7 +75,7 @@
       <div
         v-for="pokemon in filteredPokemons"
         :key="pokemon.id"
-        class="bg-yellow-100 rounded-2xl shadow-xl p-4 w-full max-w-xs border-4 border-yellow-400 relative hover:shadow-2xl transition"
+        class="bg-yellow-100 rounded-2xl shadow-xl p-4 w-full max-w-xs border-4 border-yellow-400 relative hover:shadow-2xl transition hover:animate-custom-pulse"
       >
         <!-- Header -->
         <div
