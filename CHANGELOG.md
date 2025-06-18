@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/rahibbutt/pokepipeline-frontend/compare/v1.4.0...v1.5.0) (2025-06-18)
+
+
+### Features
+
+* configure custom TailwindCSS and code refactoring ([9d790ea](https://github.com/rahibbutt/pokepipeline-frontend/commit/9d790eaae7eca5fd52ccff82641794d7a8192e38))
+
 # [1.4.0](https://github.com/rahibbutt/pokepipeline-frontend/compare/v1.3.0...v1.4.0) (2025-06-18)
 
 
